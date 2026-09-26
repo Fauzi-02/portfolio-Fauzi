@@ -1,0 +1,820 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: 0.3s ease;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 8%;
+
+    background: #0f172a;
+}
+
+nav h2 {
+    margin: 0;
+    color: white;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #60a5fa;
+}
+
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    padding: 5px 10px;
+    margin: 0;
+
+    border: none;
+
+    background: transparent;
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.menu-toggle:hover {
+    background: transparent;
+    transform: none;
+}
+
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-toggle {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid #334155;
+    border-radius: 50%;
+
+    background: #1e293b;
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    background: #334155;
+    transform: rotate(20deg);
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 60px 8%;
+
+    background: linear-gradient(
+        135deg,
+        #dbeafe,
+        #eff6ff
+    );
+}
+
+.hero-text {
+    max-width: 650px;
+    padding: 20px;
+}
+
+.hello {
+    color: #2563eb;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    margin: 10px 0;
+
+    font-size: 60px;
+
+    color: #0f172a;
+}
+
+.hero h2 {
+    color: #2563eb;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+
+    margin-right: 50px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* TYPING */
+
+#typing::after {
+    content: "|";
+
+    margin-left: 5px;
+
+    color: #2563eb;
+
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.hero button {
+    margin-top: 15px;
+
+    padding: 13px 25px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    min-height: 500px;
+
+    padding: 80px 8%;
+
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 30px;
+
+    font-size: 35px;
+}
+
+.section p {
+    max-width: 700px;
+
+    margin: 10px auto;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   SKILL
+========================= */
+
+.skill-section {
+    background: #e0f2fe;
+}
+
+.skills {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 40px;
+
+    flex-wrap: wrap;
+}
+
+.skill {
+    width: 250px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.1);
+
+    transition: 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 30px rgba(37, 99, 235, 0.2);
+}
+
+.skill h3 {
+    color: #2563eb;
+}
+
+
+/* SKILL BAR */
+
+.skill-bar {
+    width: 100%;
+    height: 12px;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+}
+
+.skill-progress {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-right: 5px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    color: white;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.skill-progress.html {
+    width: 90%;
+}
+
+.skill-progress.css {
+    width: 75%;
+}
+
+.skill-progress.javascript {
+    width: 50%;
+}
+
+
+/* =========================
+   PROJECT
+========================= */
+
+.project-section {
+    background: #f8fafc;
+}
+
+.projects {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 40px;
+
+    flex-wrap: wrap;
+}
+
+.project {
+    width: 280px;
+
+    overflow: hidden;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.1);
+
+    transition: 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* PROJECT IMAGE */
+
+.project-image {
+    width: 100%;
+    height: 160px;
+
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.4s;
+}
+
+.project:hover .project-image img {
+    transform: scale(1.08);
+}
+
+
+/* PROJECT CONTENT */
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    margin-top: 0;
+
+    color: #2563eb;
+}
+
+.project-content p {
+    font-size: 15px;
+}
+
+
+/* PROJECT TAG */
+
+.project-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+
+    background: #dbeafe;
+
+    color: #2563eb;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+/* PROJECT BUTTON */
+
+.project-btn {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 10px 20px;
+
+    background: #38bdf8;
+
+    color: #020617;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.project-btn:hover {
+    background: #0ea5e9;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   KONTAK
+========================= */
+
+#kontak {
+    background: #e0f2fe;
+}
+
+.social-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin-top: 25px;
+}
+
+.social-links a {
+    color: #0284c7;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #0f172a;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    background: #0f172a;
+
+    color: white;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+
+    color: #38bdf8;
+
+    font-size: 25px;
+}
+
+footer p {
+    color: #cbd5e1;
+}
+
+.footer-social {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    margin: 25px 0;
+}
+
+.footer-social a {
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: white;
+}
+
+.copyright {
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #334155;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ANIMASI SCROLL
+========================= */
+
+.section,
+.project,
+.skill {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode {
+    background: #f8fafc;
+
+    color: #0f172a;
+}
+
+body.light-mode nav {
+    background: white;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body.light-mode nav h2 {
+    color: #0284c7;
+}
+
+body.light-mode .menu a {
+    color: #0f172a;
+}
+
+body.light-mode .menu a:hover {
+    color: #0284c7;
+}
+
+body.light-mode .hero {
+    background: linear-gradient(
+        135deg,
+        #f8fafc,
+        #e0f2fe
+    );
+}
+
+body.light-mode .hero h1 {
+    color: #0f172a;
+}
+
+body.light-mode .hero h2 {
+    color: #0284c7;
+}
+
+body.light-mode .hero p,
+body.light-mode .section p {
+    color: #475569;
+}
+
+body.light-mode .skill-section,
+body.light-mode #kontak {
+    background: #e2e8f0;
+}
+
+body.light-mode .skill,
+body.light-mode .project {
+    background: white;
+
+    color: #0f172a;
+}
+
+body.light-mode .project p {
+    color: #475569;
+}
+
+body.light-mode .theme-toggle {
+    color: #0f172a;
+
+    background: #f1f5f9;
+
+    border-color: #cbd5e1;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .nav-right {
+        gap: 8px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 0;
+
+        padding: 10px 0;
+
+        background: #020617;
+
+        border-top: 1px solid #1e293b;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu a {
+        width: 100%;
+
+        padding: 15px;
+
+        text-align: center;
+    }
+
+    .hero {
+        min-height: auto;
+
+        flex-direction: column;
+
+        padding: 80px 5%;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 70px 5%;
+    }
+
+    .section h2 {
+        font-size: 30px;
+    }
+
+    .skills {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .skill {
+        width: 90%;
+
+        max-width: 350px;
+    }
+
+    .projects {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+
+        max-width: 350px;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .footer-social {
+        flex-wrap: wrap;
+    }
+}

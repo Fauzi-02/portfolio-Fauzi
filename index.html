@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio Saya</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+   <nav>
+
+    <h2>Portfolio</h2>
+
+    <div class="nav-right">
+
+        <div class="menu" id="menu">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#tentang" onclick="closeMenu()">Tentang</a>
+    <a href="#skill" onclick="closeMenu()">Skill</a>
+    <a href="#project" onclick="closeMenu()">Project</a>
+    <a href="#kontak" onclick="closeMenu()">Kontak</a>
+</div>
+
+        <button class="theme-toggle" onclick="toggleTheme()">
+            ☀️
+        </button>
+
+        <button class="menu-toggle" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero">
+
+        <img 
+    src="foto.jpg"
+    alt="Foto Profil"
+    class="profile-img"
+>
+
+
+        <div class="hero-text">
+
+            <p class="hello">HALO, SAYA</p>
+
+            <h1>Fauzi</h1>
+
+            <h2>
+                <span id="typing"></span>
+            </h2>
+
+            <p>
+                Saya sedang belajar membuat website
+                menggunakan HTML, CSS, dan JavaScript.
+            </p>
+
+            <button onclick="sapa()">
+                Kenalan
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+    <section id="tentang" class="section">
+
+        <h2>Tentang Saya</h2>
+
+        <p>
+            Saya adalah seseorang yang sedang belajar
+            pemrograman web dari dasar.
+        </p>
+
+        <p>
+            Saya ingin bisa membuat website sendiri
+            dan terus meningkatkan kemampuan saya.
+        </p>
+
+    </section>
+
+
+    <!-- SKILL -->
+    <section id="skill" class="section skill-section">
+
+    <h2>Skill Saya</h2>
+
+    <div class="skills">
+
+        <div class="skill">
+            <h3>HTML</h3>
+            <p>Struktur website</p>
+
+            <div class="skill-bar">
+                <div class="skill-progress html">
+                    90%
+                </div>
+            </div>
+        </div>
+
+
+        <div class="skill">
+            <h3>CSS</h3>
+            <p>Tampilan website</p>
+
+            <div class="skill-bar">
+                <div class="skill-progress css">
+                    75%
+                </div>
+            </div>
+        </div>
+
+
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Interaksi website</p>
+
+            <div class="skill-bar">
+                <div class="skill-progress javascript">
+                    50%
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- PROJECT -->
+
+<section id="project" class="section project-section">
+
+    <h2>Project Saya</h2>
+
+    <div class="projects">
+
+        <!-- PROJECT 1 -->
+        <div class="project">
+
+            <div class="project-image">
+                <img src="project1.jpg" alt="Website Pertama">
+            </div>
+
+            <div class="project-content">
+
+                <h3>Website Pertama</h3>
+
+                <p>
+                    Website pertama yang saya buat
+                    menggunakan HTML dan CSS.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+
+                <a href="project1.html" class="project-btn">
+                    Lihat Project
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 2 -->
+        <div class="project">
+
+            <div class="project-image">
+                <img src="portfolio.jpg" alt="Portfolio">
+            </div>
+
+            <div class="project-content">
+
+                <h3>Portfolio</h3>
+
+                <p>
+                    Website portfolio sederhana
+                    menggunakan HTML, CSS, dan JavaScript.
+                </p>
+
+                <div class="project-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JS</span>
+                </div>
+
+                <a href="index.html" class="project-btn">
+                    Lihat Project
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT 3 -->
+        <div class="project">
+
+            <div class="project-image">
+                <img src="javascript.jpg" alt="Project JavaScript">
+            </div>
+
+            <div class="project-content">
+
+                <h3>Project JavaScript</h3>
+
+                <p>
+                    Project sederhana untuk belajar
+                    JavaScript.
+                </p>
+
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="javascript.html" class="project-btn">
+                    Lihat Project
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="section">
+
+        <h2>Kontak Saya</h2>
+
+        <p>Email: fauzidomili02@gmail.com</p>
+
+        <p>WhatsApp: 08988016580</p>
+
+        <a 
+     href="https://wa.me/08988016580"
+    target="_blank"
+    class="project-btn"
+>
+    Hubungi Saya
+</a>
+
+<div class="social-links">
+
+    <a href="https://github.com/USERNAME" target="_blank">
+        GitHub
+    </a>
+
+    <a href="https://instagram.com/USERNAME" target="_blank">
+        Instagram
+    </a>
+
+</div>
+
+
+
+    </section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>Fauzi</h3>
+
+    <p>
+        Terima kasih sudah mengunjungi portfolio saya.
+    </p>
+
+    <div class="footer-social">
+
+        <a href="https://github.com/USERNAME" target="_blank">
+            GitHub
+        </a>
+
+        <a href="https://instagram.com/USERNAME" target="_blank">
+            Instagram
+        </a>
+
+        <a href="https://wa.me/628988016580" target="_blank">
+            WhatsApp
+        </a>
+
+    </div>
+
+    <p class="copyright">
+        © <span id="year"></span> Fauzi. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
