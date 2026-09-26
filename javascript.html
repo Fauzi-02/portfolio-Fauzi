@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>To-Do List - Fauzi</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dbeafe,
+                    #eff6ff
+                );
+        }
+
+        .todo-container {
+            width: 100%;
+            max-width: 500px;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            margin-top: 0;
+
+            text-align: center;
+
+            color: #0f172a;
+        }
+
+        .input-area {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        #taskInput {
+            flex: 1;
+
+            padding: 13px;
+
+            border: 2px solid #e2e8f0;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 16px;
+        }
+
+        #taskInput:focus {
+            border-color: #2563eb;
+        }
+
+        .add-btn {
+            padding: 0 20px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        #taskList {
+            margin: 25px 0 0;
+
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .task {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            margin-bottom: 10px;
+
+            background: #f1f5f9;
+
+            border-radius: 10px;
+        }
+
+        .task span {
+            flex: 1;
+
+            word-break: break-word;
+        }
+
+        .task.completed span {
+            color: #94a3b8;
+
+            text-decoration: line-through;
+        }
+
+        .task-actions {
+            display: flex;
+
+            gap: 5px;
+        }
+
+        .done-btn,
+        .delete-btn {
+            padding: 8px 10px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .done-btn {
+            background: #22c55e;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+        }
+
+        .back {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #0f172a;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .back:hover {
+            background: #1e293b;
+        }
+
+        @media (max-width: 500px) {
+
+            .todo-container {
+                padding: 20px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            .add-btn {
+                padding: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="todo-container">
+
+        <h1>📝 To-Do List</h1>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Masukkan tugas..."
+            >
+
+            <button
+                class="add-btn"
+                onclick="addTask()"
+            >
+                Tambah
+            </button>
+
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <button
+            class="back"
+            onclick="window.location.href='index.html'"
+        >
+            ← Kembali ke Portfolio
+        </button>
+
+    </div>
+
+
+    <script>
+
+        const taskInput =
+            document.getElementById("taskInput");
+
+        const taskList =
+            document.getElementById("taskList");
+
+
+        function addTask() {
+
+            const task =
+                taskInput.value.trim();
+
+            if (task === "") {
+
+                alert("Silakan masukkan tugas!");
+
+                return;
+            }
+
+
+            const li =
+                document.createElement("li");
+
+            li.className = "task";
+
+
+            const span =
+                document.createElement("span");
+
+            span.textContent = task;
+
+
+            const actions =
+                document.createElement("div");
+
+            actions.className =
+                "task-actions";
+
+
+            const doneButton =
+                document.createElement("button");
+
+            doneButton.textContent = "✓";
+
+            doneButton.className =
+                "done-btn";
+
+            doneButton.onclick =
+                function () {
+
+                    li.classList.toggle(
+                        "completed"
+                    );
+
+                };
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.textContent = "×";
+
+            deleteButton.className =
+                "delete-btn";
+
+            deleteButton.onclick =
+                function () {
+
+                    li.remove();
+
+                };
+
+
+            actions.appendChild(doneButton);
+
+            actions.appendChild(deleteButton);
+
+
+            li.appendChild(span);
+
+            li.appendChild(actions);
+
+
+            taskList.appendChild(li);
+
+
+            taskInput.value = "";
+
+            taskInput.focus();
+        }
+
+
+        taskInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+
+                    addTask();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
