@@ -1,205 +1,53 @@
-// =========================
-// SAPA
-// =========================
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+const themeToggle=document.getElementById("themeToggle");
+const backTop=document.getElementById("backTop");
 
-function sapa() {
-    alert("Halo! Senang berkenalan dengan kamu 👋");
+menuToggle?.addEventListener("click",()=>{
+  const opened=navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(opened));
+  menuToggle.setAttribute("aria-label",opened?"Tutup menu":"Buka menu");
+  menuToggle.textContent=opened?"×":"☰";
+});
+navLinks?.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+  navLinks.classList.remove("open");
+  menuToggle?.setAttribute("aria-expanded","false");
+  if(menuToggle){menuToggle.textContent="☰";menuToggle.setAttribute("aria-label","Buka menu");}
+}));
+
+function applyTheme(theme){
+  document.body.classList.toggle("light-mode",theme==="light");
+  if(themeToggle){themeToggle.textContent=theme==="light"?"☾":"☼";themeToggle.setAttribute("aria-label",theme==="light"?"Aktifkan mode gelap":"Aktifkan mode terang");}
 }
-
-
-// =========================
-// MENU MOBILE
-// =========================
-
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-
-    menu.classList.toggle("active");
-}
-
-function closeMenu() {
-    const menu = document.getElementById("menu");
-
-    menu.classList.remove("active");
-}
-
-
-// =========================
-// DARK / LIGHT MODE
-// =========================
-
-function toggleTheme() {
-
-    const body = document.body;
-
-    const button = document.querySelector(".theme-toggle");
-
-    body.classList.toggle("light-mode");
-
-    if (body.classList.contains("light-mode")) {
-
-        button.textContent = "🌙";
-
-        localStorage.setItem("theme", "light");
-
-    } else {
-
-        button.textContent = "☀️";
-
-        localStorage.setItem("theme", "dark");
-    }
-}
-
-
-// =========================
-// LOAD THEME
-// =========================
-
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "light") {
-
-    document.body.classList.add("light-mode");
-
-    const themeButton =
-        document.querySelector(".theme-toggle");
-
-    if (themeButton) {
-        themeButton.textContent = "🌙";
-    }
-}
-
-
-// =========================
-// ANIMASI SCROLL
-// =========================
-
-const elements = document.querySelectorAll(
-    ".section, .project, .skill"
-);
-
-const observer = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.15
-    }
-);
-
-elements.forEach((element) => {
-
-    observer.observe(element);
-
+const savedTheme=localStorage.getItem("portfolio-theme")||"dark";
+applyTheme(savedTheme);
+themeToggle?.addEventListener("click",()=>{
+  const next=document.body.classList.contains("light-mode")?"dark":"light";
+  localStorage.setItem("portfolio-theme",next);
+  applyTheme(next);
 });
 
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add("visible");revealObserver.unobserve(entry.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
 
-// =========================
-// TYPING EFFECT
-// =========================
-
-const texts = [
-    "Pelajar",
-    "Web Developer Pemula",
-    "HTML Learner",
-    "CSS Learner",
-    "JavaScript Learner"
-];
-
-let textIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typingEffect() {
-
-    const typing =
-        document.getElementById("typing");
-
-    if (!typing) return;
-
-    const currentText =
-        texts[textIndex];
-
-    if (!deleting) {
-
-        typing.textContent =
-            currentText.substring(
-                0,
-                charIndex + 1
-            );
-
-        charIndex++;
-
-        if (
-            charIndex ===
-            currentText.length
-        ) {
-
-            deleting = true;
-
-            setTimeout(
-                typingEffect,
-                1500
-            );
-
-            return;
-        }
-
-    } else {
-
-        typing.textContent =
-            currentText.substring(
-                0,
-                charIndex - 1
-            );
-
-        charIndex--;
-
-        if (charIndex === 0) {
-
-            deleting = false;
-
-            textIndex++;
-
-            if (
-                textIndex === texts.length
-            ) {
-
-                textIndex = 0;
-
-            }
-        }
+const sections=[...document.querySelectorAll("main section[id]")];
+const navAnchors=[...document.querySelectorAll(".nav-links a")];
+const sectionObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navAnchors.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+entry.target.id));
     }
+  });
+},{rootMargin:"-35% 0px -55% 0px"});
+sections.forEach(section=>sectionObserver.observe(section));
 
-    setTimeout(
-        typingEffect,
-        deleting ? 50 : 100
-    );
-}
-
-typingEffect();
-
-
-// =========================
-// TAHUN FOOTER
-// =========================
-
-const year =
-    document.getElementById("year");
-
-if (year) {
-
-    year.textContent =
-        new Date().getFullYear();
-
-}
+window.addEventListener("scroll",()=>{
+  backTop?.classList.toggle("visible",window.scrollY>500);
+},{passive:true});
+backTop?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+const year=document.getElementById("year");
+if(year)year.textContent=new Date().getFullYear();
